@@ -1,0 +1,172 @@
+/* ============================================================
+   BLOG — so'nggi maqolalar bo'limi
+   ============================================================ */
+
+.blog-head {
+  margin-bottom: var(--sp-8);
+}
+
+/* Grid: 1 ustun mobil, 2 ustun >=768px */
+.blog-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-5);
+}
+
+.blog-item {
+  display: flex;
+}
+
+/* Butun karta bosiladigan havola */
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-6);
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--border);
+  transition:
+    transform var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+.blog-card:hover,
+.blog-card:focus-visible {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.blog-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Meta: sana + o'qish vaqti */
+.blog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-dim);
+}
+
+.blog-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.blog-meta-item svg {
+  flex-shrink: 0;
+}
+
+/* Sarlavha — hoverda accent rangga o'tadi */
+.blog-card-title {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: var(--fs-h3);
+  line-height: 1.25;
+  color: var(--text);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.blog-card:hover .blog-card-title,
+.blog-card:focus-visible .blog-card-title {
+  color: var(--accent);
+}
+
+/* Qisqacha matn — 3 qatorga cheklangan */
+.blog-excerpt {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Teglar */
+.blog-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+/* "O'qish" affordansi — strelka hoverda o'ngga siljiydi */
+.blog-readmore {
+  margin-top: auto;
+  padding-top: var(--sp-2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.blog-readmore-icon {
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.blog-card:hover .blog-readmore-icon,
+.blog-card:focus-visible .blog-readmore-icon {
+  transform: translateX(5px);
+}
+
+/* Bo'sh holat */
+.blog-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  padding: var(--sp-12) var(--sp-6);
+  text-align: center;
+  color: var(--text-dim);
+}
+
+.blog-empty-text {
+  margin: 0;
+  font-size: var(--fs-lead);
+  color: var(--text-muted);
+}
+
+/* ---------- Responsiv ---------- */
+@media (min-width: 768px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-6);
+  }
+}
+
+/* Harakatni kamaytirish afzalligi */
+@media (prefers-reduced-motion: reduce) {
+  .blog-card,
+  .blog-readmore-icon {
+    transition: none;
+  }
+  .blog-card:hover,
+  .blog-card:focus-visible {
+    transform: none;
+  }
+  .blog-card:hover .blog-readmore-icon,
+  .blog-card:focus-visible .blog-readmore-icon {
+    transform: none;
+  }
+}

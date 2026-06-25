@@ -1,0 +1,148 @@
+/* ============================================================
+   Experience — vertikal vaqt chizig'i (timeline)
+   Barcha klasslar .exp- prefiksi bilan (to'qnashuvni oldini olish)
+   ============================================================ */
+
+.exp-header {
+  margin-bottom: var(--sp-8);
+}
+
+/* ---------- Timeline o'rovchisi ---------- */
+.exp-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Vertikal gradient chiziq — node markazidan o'tadi.
+   --exp-rail: chiziq markazining chap chetdan masofasi.
+   --exp-node: tugun (dot) o'lchami. */
+.exp-timeline {
+  --exp-node: 36px;
+  --exp-rail: 18px; /* node markazi = node/2 */
+  --exp-gap: var(--sp-5);
+}
+
+.exp-timeline::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: calc(var(--exp-rail) - 1px);
+  width: 2px;
+  border-radius: var(--r-full);
+  background: var(--grad-accent);
+  opacity: 0.55;
+}
+
+/* ---------- Bitta yozuv ---------- */
+.exp-item {
+  position: relative;
+  padding-left: calc(var(--exp-node) + var(--exp-gap));
+}
+
+.exp-item:not(:last-child) {
+  margin-bottom: var(--sp-6);
+}
+
+/* ---------- Tugun (node / dot) ---------- */
+.exp-node {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: var(--exp-node);
+  height: var(--exp-node);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-full);
+  color: var(--bg);
+  background: var(--grad-accent);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--border-strong), var(--glow);
+  z-index: 1;
+}
+
+.exp-node-icon {
+  display: block;
+}
+
+/* ---------- Karta ---------- */
+.exp-card {
+  padding: var(--sp-5);
+}
+
+.exp-item:hover .exp-card {
+  transform: translateY(-2px);
+}
+
+.exp-role {
+  font-family: var(--font-head);
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.exp-company {
+  margin: var(--sp-1) 0 0;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.exp-period {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  margin: var(--sp-2) 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--text-dim);
+}
+
+.exp-period-icon {
+  flex-shrink: 0;
+}
+
+.exp-desc {
+  margin: var(--sp-3) 0 0;
+  color: var(--text-muted);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+}
+
+/* ---------- Mobil: kompakt timeline (chiziq chap chetga yaqin) ---------- */
+@media (max-width: 640px) {
+  .exp-timeline {
+    --exp-node: 30px;
+    --exp-rail: 15px;
+    --exp-gap: var(--sp-4);
+  }
+
+  .exp-card {
+    padding: var(--sp-4);
+  }
+
+  .exp-node {
+    top: 3px;
+    border-width: 2px;
+  }
+}
+
+/* ---------- Kattaroq ekran: ozroq nafas ---------- */
+@media (min-width: 768px) {
+  .exp-timeline {
+    --exp-gap: var(--sp-6);
+  }
+
+  .exp-item:not(:last-child) {
+    margin-bottom: var(--sp-7);
+  }
+}
+
+/* Harakatni kamaytirish rejimi */
+@media (prefers-reduced-motion: reduce) {
+  .exp-item:hover .exp-card {
+    transform: none;
+  }
+}

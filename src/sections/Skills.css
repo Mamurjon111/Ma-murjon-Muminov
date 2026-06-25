@@ -1,0 +1,107 @@
+/* ============================================================
+   Ko'nikmalar bo'limi — kategoriyalar kartasi + chip teglar
+   Barcha class nomlari .skills- prefiksi bilan (to'qnashuvsiz)
+   ============================================================ */
+
+.skills-header {
+  margin-bottom: var(--sp-8);
+}
+
+/* Responsiv grid: mobil 1 ustun, >=768px 2 ustun */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-5);
+}
+
+.skills-item {
+  display: flex; /* karta to'liq balandlikni egallashi uchun */
+}
+
+@media (min-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-6);
+  }
+}
+
+/* ---------- Karta ---------- */
+.skills-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  padding: var(--sp-6);
+}
+
+.skills-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.skills-card-head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.skills-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: var(--r-md);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+}
+
+.skills-card-title {
+  font-size: var(--fs-h3);
+  margin: 0;
+}
+
+/* ---------- Chip ro'yxati ---------- */
+.skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+}
+
+.skills-chips li {
+  display: inline-flex;
+}
+
+/* Chip ustiga kelganda: accent chegara + yengil ko'tarilish */
+.skills-chip {
+  cursor: default;
+  transition: transform var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out),
+    background var(--dur) var(--ease-out);
+  will-change: transform;
+}
+
+.skills-chip:hover {
+  transform: translateY(-2px);
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+@media (max-width: 640px) {
+  .skills-card {
+    padding: var(--sp-5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-card:hover,
+  .skills-chip:hover {
+    transform: none;
+  }
+}

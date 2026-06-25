@@ -1,0 +1,95 @@
+/* ============================================================
+   About — men haqimda bo'limi
+   ============================================================ */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+  margin-top: var(--sp-6);
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--sp-10);
+    align-items: start;
+  }
+}
+
+/* ---------- Matn ---------- */
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.about-para {
+  font-size: var(--fs-lead);
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+.about-para:first-child {
+  color: var(--text);
+}
+
+/* ---------- Statistika ---------- */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3);
+}
+
+@media (min-width: 480px) {
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-5) var(--sp-4);
+  transition: border-color var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+.about-stat:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-3px);
+}
+
+.about-stat-value {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  line-height: 1;
+}
+
+.about-stat-label {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+/* Oxirgi "eslatma" kartasi — accent uslubda, ikkala ustunni egallaydi */
+.about-stat--note {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+}
+.about-stat--note:hover {
+  transform: none;
+}

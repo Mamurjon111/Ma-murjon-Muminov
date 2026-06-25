@@ -1,0 +1,173 @@
+/* ============================================================
+   Navbar — yopishqoq (sticky) sarlavha, frosted/blur fon
+   ============================================================ */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: rgba(10, 10, 11, 0.55);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  border-bottom: 1px solid transparent;
+  transition: background var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+/* Skroll qilingach — quyuqroq fon + pastki chegara */
+.nav--scrolled {
+  background: rgba(10, 10, 11, 0.82);
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-inner {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+}
+
+/* ---------- Brend ---------- */
+.nav-brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-right: auto;
+  transition: opacity var(--dur) var(--ease-out);
+}
+.nav-brand:hover {
+  opacity: 0.85;
+}
+.nav-brand-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--r-full);
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
+  align-self: flex-end;
+  margin-bottom: 4px;
+}
+
+/* ---------- Desktop havolalar ---------- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+}
+
+.nav-link {
+  position: relative;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  padding: 0.25rem 0;
+  transition: color var(--dur) var(--ease-out);
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: var(--accent);
+  border-radius: var(--r-full);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease-out);
+}
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--text);
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------- CTA ---------- */
+.nav-cta {
+  flex-shrink: 0;
+}
+
+/* ---------- Mobil hamburger tugmasi ---------- */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color var(--dur) var(--ease-out),
+    background var(--dur) var(--ease-out);
+}
+.nav-toggle:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-hover);
+}
+
+/* ---------- Mobil panel ---------- */
+.nav-mobile {
+  overflow: hidden;
+  background: rgba(10, 10, 11, 0.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-3) var(--sp-5) var(--sp-5);
+  max-width: var(--container);
+  margin-inline: auto;
+}
+
+.nav-mobile-link {
+  display: block;
+  padding: 0.85rem 0;
+  font-size: var(--fs-lead);
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  transition: color var(--dur) var(--ease-out),
+    padding-left var(--dur) var(--ease-out);
+}
+.nav-mobile-link:hover,
+.nav-mobile-link:focus-visible {
+  color: var(--accent);
+  padding-left: var(--sp-2);
+}
+
+.nav-mobile-cta {
+  width: 100%;
+  margin-top: var(--sp-4);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+  .nav-toggle {
+    display: inline-flex;
+  }
+}
+
+/* Skroll vaqtida menyu animatsiyasini kamaytirish (a11y) */
+@media (prefers-reduced-motion: reduce) {
+  .nav-link::after {
+    transition: none;
+  }
+}
